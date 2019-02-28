@@ -1,6 +1,9 @@
 package com.labs.car;
 
 
+import java.util.Comparator;
+import java.lang.*;
+
 /*Таксопарк. Определить иерархию автомобилей (любых в том числе и
 грузовых). Создать таксопарк. Создать управляющего. Его функции:
 подсчитать стоимость автопарка, провести сортировку автомобилей парка по
@@ -11,6 +14,13 @@ public abstract class Car {
     public int getFuelRate() {
         return fuelRate;
     }
+
+    public static Comparator<Car> COMPARE_BY_FUELRATE = new Comparator<Car>(){
+        public int compare(Car one, Car other){
+            return ((Integer)one.fuelRate).compareTo(other.getFuelRate());
+        }
+
+    };
 
     private void setFuelRate(int fuelRate) {
         this.fuelRate = fuelRate;

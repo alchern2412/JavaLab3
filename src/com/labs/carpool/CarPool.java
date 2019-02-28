@@ -13,12 +13,17 @@ public class CarPool {
 
     }
 
+
     public CarPool(Car firstcar){
         carList.add(firstcar);
     }
 
     public int count(){
         return carList.size();
+    }
+
+    public ArrayList<Car> getCarList() {
+        return carList;
     }
 
     public void add(Car obj){
