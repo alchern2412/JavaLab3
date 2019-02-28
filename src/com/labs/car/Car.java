@@ -36,10 +36,30 @@ public abstract class Car {
     private int price;
     private int speed;
 
-    public Car(int fuelRate, int price, int speed)
+    public Modal getModal() {
+        return modal;
+    }
+
+    public void setModal(Modal modal) {
+        this.modal = modal;
+    }
+
+    private Modal modal;
+
+    public Car(Modal modal, int fuelRate, int price, int speed)
     {
         this.setFuelRate(fuelRate);
         this.setPrice(price);
         this.setSpeed(speed);
+        this.setModal(modal);
     }
+}
+
+enum Modal{
+    Volvo,
+    MAN,
+    Mercedes,
+    Volkswagen,
+    Geely,
+    BMW
 }

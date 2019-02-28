@@ -12,8 +12,8 @@ public class CarTruck extends Car {
         this.tonnage = tonnage;
     }
 
-    public CarTruck(int fuelRate, int price, int speed, int tonnage) {
-        super(fuelRate, price, speed);
+    public CarTruck(Modal modal, int fuelRate, int price, int speed, int tonnage) {
+        super(modal, fuelRate, price, speed);
         this.setTonnage(tonnage);
     }
 }

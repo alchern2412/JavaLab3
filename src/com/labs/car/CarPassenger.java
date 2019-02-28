@@ -13,8 +13,8 @@ public class CarPassenger extends Car {
     private int countPassengers;
 
 
-    public CarPassenger(int fuelRate, int price, int speed, int countPassengers) {
-        super(fuelRate, price, speed);
+    public CarPassenger(Modal modal, int fuelRate, int price, int speed, int countPassengers) {
+        super(modal, fuelRate, price, speed);
         this.setCountPassengers(countPassengers);
 
     }
