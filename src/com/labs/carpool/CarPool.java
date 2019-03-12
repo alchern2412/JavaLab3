@@ -6,13 +6,13 @@ import com.labs.car.*;
 import com.labs.carmanager.CarManager;
 
 public class CarPool {
+    // стандартная коллекция ArrayList<>
     private ArrayList<Car> carList = new ArrayList<Car>();
 
     public CarPool(ArrayList<Car> carList) {
         this.carList = carList;
 
     }
-
 
     public CarPool(Car firstcar){
         carList.add(firstcar);

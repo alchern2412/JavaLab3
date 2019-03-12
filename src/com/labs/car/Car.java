@@ -3,6 +3,7 @@ package com.labs.car;
 
 import java.util.Comparator;
 import java.lang.*;
+import com.labs.carexeption.CarFieldsException;
 
 /*Таксопарк. Определить иерархию автомобилей (любых в том числе и
 грузовых). Создать таксопарк. Создать управляющего. Его функции:
@@ -10,7 +11,7 @@ import java.lang.*;
 расходу топлива, найти автомобиль в компании, соответствующий заданному
 диапазону параметров скорости.
 */
-public abstract class Car {
+public abstract class Car {      // абстрактный класс
     public int getFuelRate() {
         return fuelRate;
     }
@@ -22,15 +23,21 @@ public abstract class Car {
 
     };
 
-    private void setFuelRate(int fuelRate) {
+    private void setFuelRate(int fuelRate)  throws CarFieldsException{
+        if(fuelRate < 0){
+            throw new CarFieldsException("Расход топлива не может быть отрицательным", fuelRate);
+        }
         this.fuelRate = fuelRate;
     }
 
-    public int getPrice() {
+    public int getPrice(){
         return price;
     }
 
-    private void setPrice(int price) {
+    private void setPrice(int price) throws CarFieldsException /*исключение*/ {
+        if(price < 0){
+            throw new CarFieldsException("Стоимость автомобиля не может быть отрицательной", price);
+        }
         this.price = price;
     }
 
@@ -38,7 +45,10 @@ public abstract class Car {
         return speed;
     }
 
-    private void setSpeed(int speed) {
+    private void setSpeed(int speed) throws CarFieldsException{
+        if(speed <= 0){
+            throw new CarFieldsException("Скорость автомобиля не может быть отрицательной или равной 0", speed);
+        }
         this.speed = speed;
     }
 
@@ -58,18 +68,16 @@ public abstract class Car {
 
     public Car(Modal modal, int fuelRate, int price, int speed)
     {
-        this.setFuelRate(fuelRate);
-        this.setPrice(price);
-        this.setSpeed(speed);
-        this.setModal(modal);
+        try {
+
+            this.setFuelRate(fuelRate);
+            this.setPrice(price);
+            this.setSpeed(speed);
+            this.setModal(modal);
+        }
+        catch (CarFieldsException e){
+            System.out.println(e.getMessage());
+        }
     }
 }
 
-enum Modal{
-    Volvo,
-    MAN,
-    Mercedes,
-    Volkswagen,
-    Geely,
-    BMW
-}
