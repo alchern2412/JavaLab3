@@ -1,8 +1,11 @@
 package com.labs.car;
 
 import com.labs.carexeption.CarFieldsException;
+import org.apache.log4j.Logger;
 
 public class CarTruck extends Car {
+
+    private static final Logger LOGGER = Logger.getLogger(CarTruck.class.getSimpleName());
 
     private int tonnage;
 
@@ -12,6 +15,7 @@ public class CarTruck extends Car {
 
     private void setTonnage(int tonnage) throws CarFieldsException {
         if(tonnage <= 0){
+            LOGGER.warn("Tonnage is lower zero!!!");
             throw new CarFieldsException("Тоннаж грузового автомобиля не может быть <= 0", tonnage);
         }
 
@@ -28,6 +32,7 @@ public class CarTruck extends Car {
             System.out.println(e.getMessage());
             System.out.println(e.getNumber());
         }
+        LOGGER.info("Create CarTruck");
     }
 
     @Override

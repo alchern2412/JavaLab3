@@ -1,8 +1,12 @@
 package com.labs.car;
 
 import com.labs.carexeption.CarFieldsException;
+import com.labs.main.Main;
+import org.apache.log4j.Logger;
 
 public class CarPassenger extends Car {
+
+    private static final Logger LOGGER = Logger.getLogger(CarPassenger.class.getSimpleName());
 
     public int getCountPassengers() {
         return countPassengers;
@@ -18,6 +22,7 @@ public class CarPassenger extends Car {
 
     public CarPassenger(Modal modal, int fuelRate, int price, int speed, int countPassengers) {
             super(modal, fuelRate, price, speed);
+            LOGGER.info("Create CarPassenger");
             try {
                 this.setCountPassengers(countPassengers);
             }

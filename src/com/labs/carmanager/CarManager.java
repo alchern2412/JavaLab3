@@ -15,13 +15,7 @@ import java.util.Comparator;
 */
 public class CarManager {
 
-    private CarPool carPool;
-
-    public CarManager(CarPool carPool) {
-        this.carPool = carPool;
-    }
-
-    public int pricePool()
+    public int pricePool(CarPool carPool)
     {
         int count = carPool.count();
         int price = 0;
@@ -35,11 +29,11 @@ public class CarManager {
     /**
      * Сортировка по расходу топлива
      */
-    public void sortByFuel(){
+    public void sortByFuel(CarPool carPool){
         Collections.sort(carPool.getCarList(), Car.COMPARE_BY_FUELRATE);
     }
     
-    public ArrayList<Car> findCar(int lSpeed, int rSpeed){
+    public ArrayList<Car> findCar(int lSpeed, int rSpeed, CarPool carPool){
         ArrayList<Car> result = new ArrayList<>();
         for (var i :
                 carPool.getCarList()) {
